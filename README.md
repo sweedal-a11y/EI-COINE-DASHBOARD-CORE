@@ -1,10 +1,11 @@
-# EI-COINS - Emireq Account Creation
+# EI-COINS - Emireq Dashboard
 
-A responsive React application for creating an Emireq account with email confirmation, reCAPTCHA verification, and comprehensive user activity tracking.
+A comprehensive React application featuring a refined dashboard UI with account creation, email confirmation, reCAPTCHA verification, and sophisticated user activity tracking.
 
 ## Features
 
 - ✅ **Pixel-perfect design** matching Figma specifications
+- ✅ **Refined Dashboard UI** with modern components and interactions
 - ✅ **Email validation** with real-time feedback
 - ✅ **Google reCAPTCHA** integration for bot prevention
 - ✅ **Comprehensive activity tracking** including:
@@ -26,7 +27,7 @@ A responsive React application for creating an Emireq account with email confirm
 
 - **React 18.2** - UI library
 - **Vite 5.0** - Build tool and dev server
-- **Vanilla CSS** - Styling with modern features
+- **Tailwind CSS** - Utility-first CSS framework
 - **Google reCAPTCHA** - Bot protection
 
 ## Getting Started
@@ -68,9 +69,19 @@ EI-COINS/
 ├── index.html           # HTML entry point
 ├── main.jsx            # React entry point
 ├── App.jsx             # Main App component
-├── CreateAccount.jsx   # Account creation component
-├── CreateAccount.css   # Component styles
-├── index.css           # Global styles
+├── src/
+│   ├── Dashboard.jsx   # Main dashboard component
+│   ├── CreateAccount.jsx   # Account creation component
+│   ├── Register4.jsx   # Registration step 4
+│   ├── Register5.jsx   # Registration step 5
+│   ├── Register7.jsx   # Registration step 7
+│   ├── AccountInformation.jsx # Account info component
+│   ├── EmailConfirmationSuccess.jsx # Email success
+│   ├── EmailVerificationPending.jsx # Email pending
+│   ├── assets/         # Static assets
+│   │   └── arab1.png   # User avatar
+│   ├── index.css       # Global styles
+│   └── *.css           # Component styles
 ├── package.json        # Dependencies and scripts
 ├── vite.config.js      # Vite configuration
 └── README.md          # Documentation
@@ -78,8 +89,15 @@ EI-COINS/
 
 ## Component Features
 
-### CreateAccount Component
+### Dashboard Component
+- **Modern UI**: Refined dashboard with cards, charts, and transactions
+- **Asset Selection**: Interactive asset buttons with state management
+- **Transaction History**: Recent transactions with detailed icons
+- **Activity Charts**: Interactive charts with time range selection
+- **Profile Management**: User profile with dropdown menu
+- **Responsive Design**: Optimized for all screen sizes
 
+### CreateAccount Component
 - **Email Validation**: Real-time validation with regex pattern
 - **reCAPTCHA**: Google reCAPTCHA v2 integration
 - **Activity Tracking**: Logs all user interactions to console
@@ -139,12 +157,13 @@ All activities are logged to the browser console and can be sent to analytics se
 
 ### Colors
 
-The color scheme uses Google Material Design colors:
-- Primary: `#4285f4` (Blue)
-- Secondary: `#fbbc05` (Yellow)
-- Error: `#ea4335` (Red)
-- Text: `#202124` (Dark Gray)
-- Background: `#f5f7fa` (Light Gray)
+The color scheme uses modern design colors:
+- Primary: `#2563eb` (Blue)
+- Secondary: `#f59e0b` (Amber)
+- Success: `#10b981` (Emerald)
+- Error: `#ef4444` (Red)
+- Text: `#1e293b` (Slate)
+- Background: `#f8fafc` (Slate)
 
 ### reCAPTCHA
 
