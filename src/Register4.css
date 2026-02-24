@@ -1,0 +1,457 @@
+/* Register4.css — Address step */
+
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Page Shell ───────────────────────────────────────────────────────────── */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f7fa url('./assets/bg.png') no-repeat center 45%;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.r4-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 20px 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────────── */
+.r4-logo {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.r4-logo:hover {
+  transform: translateY(-2px);
+}
+
+.r4-logo svg {
+  width: auto;
+  height: 32px;
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.r4-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(193, 193, 193, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  padding: 24px 40px 28px;
+  max-width: 730px;
+  width: 100%;
+  margin: 0 auto;
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.r4-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #121212;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ── Progress Step ────────────────────────────────────────────────────────── */
+.r4-progress-container {
+  margin-bottom: 20px;
+}
+
+.r4-step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.r4-step-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2b7fff;
+  box-shadow: 0 2px 4px rgba(43, 127, 255, 0.3), 0 4px 6px rgba(43, 127, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.r4-step-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #121212;
+}
+
+.r4-progress-bar-wrapper {
+  width: 100%;
+  padding: 0 2px;
+}
+
+.r4-progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #f3f3f5;
+  border-radius: 3px;
+  position: relative;
+  overflow: visible;
+}
+
+.r4-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #155dfc 0%, #e2e8f0 100%);
+  border-radius: 3px;
+  position: relative;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.r4-progress-indicator {
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #155dfc;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(21, 93, 252, 0.22);
+}
+
+/* ── Form ─────────────────────────────────────────────────────────────────── */
+.r4-form {
+  margin-top: 0;
+}
+
+.r4-form-group {
+  margin-bottom: 14px;
+}
+
+.r4-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #121212;
+  margin-bottom: 7px;
+}
+
+/* ── Select / Dropdown ────────────────────────────────────────────────────── */
+.r4-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.r4-select {
+  width: 100%;
+  padding: 11px 44px 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  background: #f7f7f9;
+  color: #121212;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  line-height: 1.4;
+}
+
+.r4-select.placeholder-selected {
+  color: rgba(113, 113, 130, 0.7);
+}
+
+.r4-select:hover {
+  border-color: #c1c1c1;
+  background: #f0f0f3;
+}
+
+.r4-select:focus {
+  border-color: #2b7fff;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(43, 127, 255, 0.10);
+}
+
+.r4-select.error {
+  border-color: #ea4335;
+  background: #fff5f5;
+}
+
+/* Custom chevron icon */
+.r4-select-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #717182;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+/* ── Error Message ────────────────────────────────────────────────────────── */
+.r4-error-msg {
+  display: block;
+  color: #ea4335;
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 16px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.r4-error-msg.show {
+  opacity: 1;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.r4-btn-next {
+  width: 100%;
+  padding: 13px 24px;
+  background: #ffc300;
+  color: #121212;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  min-height: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 7px rgba(255, 195, 0, 0.13);
+  margin-bottom: 8px;
+}
+
+.r4-btn-next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.r4-btn-next:hover {
+  background: #efba00;
+  box-shadow: 0 4px 14px rgba(255, 195, 0, 0.32);
+  transform: translateY(-1px);
+}
+
+.r4-btn-next:hover::before {
+  transform: translateX(100%);
+}
+
+.r4-btn-next:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 195, 0, 0.2);
+}
+
+.r4-btn-next:disabled {
+  background: #f1f3f4;
+  color: #9aa0a6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.r4-btn-next.loading {
+  pointer-events: none;
+}
+
+.r4-btn-next.loading span {
+  opacity: 0;
+}
+
+.r4-btn-next.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  border: 3px solid #202124;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: r4-spin 0.8s linear infinite;
+}
+
+@keyframes r4-spin {
+  to { transform: rotate(360deg); }
+}
+
+.r4-btn-back {
+  width: 100%;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #121212;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1.5px solid #d3d3d3;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  min-height: 50px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.r4-btn-back:hover {
+  background: #f7f7f9;
+  border-color: #b0b0b8;
+  transform: translateY(-1px);
+}
+
+.r4-btn-back:active {
+  transform: translateY(0);
+}
+
+/* ── Login Link ───────────────────────────────────────────────────────────── */
+.r4-login-text {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #717182;
+}
+
+.r4-login-link {
+  color: #152b5a;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.r4-login-link:hover {
+  color: #0f1f3f;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+.r4-footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #717182;
+}
+
+.r4-support-link {
+  color: #152b5a;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.r4-support-link:hover {
+  color: #0f1f3f;
+}
+
+/* ── Focus Accessible ─────────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid #2b7fff;
+  outline-offset: 2px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .r4-container {
+    padding: 12px 16px 20px;
+  }
+
+  .r4-card {
+    padding: 20px 18px 24px;
+  }
+
+  .r4-card-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .r4-logo svg {
+    height: 26px;
+  }
+  
+  .r4-form-group {
+    margin-bottom: 12px;
+  }
+  
+  .r4-logo {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .r4-card {
+    padding: 18px 14px 20px;
+    border-radius: 10px;
+  }
+
+  .r4-card-title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .r4-select {
+    font-size: 13px;
+    padding: 10px 40px 10px 12px;
+  }
+
+  .r4-btn-next,
+  .r4-btn-back {
+    font-size: 14px;
+    min-height: 46px;
+  }
+  
+  .r4-form-group {
+    margin-bottom: 10px;
+  }
+  
+  .r4-form-label {
+    font-size: 12px;
+  }
+  
+  .r4-progress-container {
+    margin-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .r4-card {
+    padding: 16px 12px 18px;
+  }
+  
+  .r4-form-group {
+    margin-bottom: 10px;
+  }
+  
+  .r4-card-title {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+}

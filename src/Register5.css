@@ -1,0 +1,829 @@
+/* Register5 - Trading Amount Step */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #F5F7FA url('./assets/bg.png') no-repeat center 45%;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Decorative Elements */
+body::before {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(21, 93, 252, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -300px;
+  left: -300px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255, 195, 0, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -250px;
+  right: -250px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Container */
+.r5-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 16px 24px 24px;
+  overflow-y: auto;
+}
+
+/* Logo */
+.r5-logo {
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.r5-logo:hover {
+  opacity: 0.85;
+}
+
+.r5-logo svg {
+  display: block;
+}
+
+/* Card Container */
+.r5-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0px 8px 32px rgba(17, 17, 26, 0.06), 0px 4px 16px rgba(17, 17, 26, 0.04);
+  padding: 24px 40px 32px;
+  width: 100%;
+  max-width: 540px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.r5-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 12px 40px rgba(17, 17, 26, 0.08), 0px 6px 20px rgba(17, 17, 26, 0.06);
+}
+
+/* Card Title */
+.r5-card-title {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  color: #0D0D12;
+  margin: 0 0 16px 0;
+}
+
+/* Progress Container */
+.r5-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Step Indicator */
+.r5-step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.r5-step-icon {
+  width: 32px;
+  height: 32px;
+  background: #2B7FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0px 2px 4px rgba(43, 127, 255, 0.3), 0px 4px 6px rgba(43, 127, 255, 0.3);
+}
+
+.r5-step-text {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #121212;
+}
+
+/* Progress Bar Wrapper */
+.r5-progress-bar-wrapper {
+  width: 100%;
+}
+
+.r5-progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #F3F3F5;
+  border-radius: 100px;
+  overflow: visible;
+  position: relative;
+}
+
+.r5-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #155DFC 0%, #E2E8F0 100%);
+  border-radius: 100px;
+  position: relative;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.r5-progress-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #155DFC;
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.r5-progress-indicator-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(21, 93, 252, 0.24);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Form */
+.r5-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.r5-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.r5-form-label {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #43536D;
+}
+
+/* Radio Group */
+.r5-radio-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.r5-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  position: relative;
+}
+
+.r5-radio-option:hover {
+  background-color: rgba(21, 93, 252, 0.04);
+}
+
+.r5-radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.r5-radio-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #D1D7E0;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.r5-radio-option input[type="radio"]:checked + .r5-radio-custom {
+  border-color: #155DFC;
+  background: #FFFFFF;
+}
+
+.r5-radio-option input[type="radio"]:checked + .r5-radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #155DFC;
+  border-radius: 50%;
+}
+
+.r5-radio-option input[type="radio"]:focus + .r5-radio-custom {
+  box-shadow: 0 0 0 3px rgba(21, 93, 252, 0.1);
+}
+
+.r5-radio-label {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #43536D;
+  cursor: pointer;
+}
+
+.r5-radio-option.selected .r5-radio-label {
+  color: #155DFC;
+  font-weight: 600;
+}
+
+/* Select Wrapper */
+.r5-select-wrapper {
+  position: relative;
+}
+
+.r5-select {
+  width: 100%;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #43536D;
+  padding: 11px 44px 11px 14px;
+  background: #FFFFFF;
+  border: 1.4px solid #D1D7E0;
+  border-radius: 10px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.r5-select:hover {
+  border-color: #A8B4C8;
+}
+
+.r5-select:focus {
+  border-color: #155DFC;
+  box-shadow: 0px 0px 0px 3px rgba(21, 93, 252, 0.08);
+}
+
+.r5-select.error {
+  border-color: #EF4444;
+}
+
+.r5-select.error:focus {
+  border-color: #EF4444;
+  box-shadow: 0px 0px 0px 3px rgba(239, 68, 68, 0.08);
+}
+
+.r5-select.placeholder-selected {
+  color: #9CA8BA;
+}
+
+.r5-select option {
+  color: #43536D;
+  font-weight: 500;
+}
+
+.r5-select option:first-child {
+  color: #9CA8BA;
+}
+
+/* Select Chevron */
+.r5-select-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.r5-select-wrapper:focus-within .r5-select-chevron {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Error Message */
+.r5-error-msg {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #EF4444;
+  margin-top: 4px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease, max-height 0.2s ease;
+}
+
+.r5-error-msg.show {
+  opacity: 1;
+  max-height: 20px;
+}
+
+/* Next Button */
+.r5-btn-next {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, #FFC300 0%, #FFAA00 100%);
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0D0D12;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.r5-btn-next::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.r5-btn-next:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 8px 24px rgba(255, 195, 0, 0.3);
+}
+
+.r5-btn-next:hover::before {
+  opacity: 1;
+}
+
+.r5-btn-next:active {
+  transform: translateY(0);
+  box-shadow: 0px 4px 12px rgba(255, 195, 0, 0.2);
+}
+
+.r5-btn-next:focus {
+  outline: none;
+  box-shadow: 0px 8px 24px rgba(255, 195, 0, 0.3), 0 0 0 3px rgba(255, 195, 0, 0.2);
+}
+
+.r5-btn-next:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.r5-btn-next.loading span::after {
+  content: '...';
+  animation: r5-dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes r5-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Back Button */
+.r5-btn-back {
+  width: 100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1.4px solid #D1D7E0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #43536D;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.r5-btn-back:hover {
+  background: #F9FAFB;
+  border-color: #A8B4C8;
+  transform: translateY(-1px);
+}
+
+.r5-btn-back:active {
+  transform: translateY(0);
+  background: #F5F7FA;
+}
+
+.r5-btn-back:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 93, 252, 0.08);
+}
+
+/* Login Text */
+.r5-login-text {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #717182;
+  margin-top: 4px;
+}
+
+.r5-login-link {
+  color: #155DFC;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.r5-login-link:hover {
+  color: #0D47C7;
+}
+
+/* Footer */
+.r5-footer {
+  margin-top: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.r5-footer p {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  color: #717182;
+}
+
+.r5-support-link {
+  color: #155DFC;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-weight: 600;
+}
+
+.r5-support-link:hover {
+  color: #0D47C7;
+}
+
+/* Responsive Design */
+
+/* Tablet Landscape & Below (≤1024px) */
+@media (max-width: 1024px) {
+  .r5-container {
+    padding: 16px 20px 20px;
+  }
+  
+  .r5-card {
+    padding: 24px 32px 28px;
+  }
+}
+
+/* Tablet Portrait (≤768px) */
+@media (max-width: 768px) {
+  .r5-container {
+    padding: 12px 16px 16px;
+  }
+
+  .r5-logo {
+    margin-bottom: 16px;
+  }
+
+  .r5-logo svg {
+    width: 150px;
+    height: auto;
+  }
+
+  .r5-card {
+    padding: 20px 24px 24px;
+    max-width: 480px;
+  }
+
+  .r5-card-title {
+    font-size: 24px;
+    line-height: 36px;
+    margin-bottom: 12px;
+  }
+
+  .r5-progress-container {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .r5-step-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .r5-step-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .r5-step-text {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .r5-progress-bar-track {
+    height: 5px;
+  }
+
+  .r5-progress-indicator {
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+  }
+
+  .r5-form {
+    gap: 16px;
+  }
+
+  .r5-form-group {
+    gap: 6px;
+  }
+
+  .r5-form-label {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .r5-radio-option {
+    padding: 6px 10px;
+  }
+
+  .r5-radio-custom {
+    width: 16px;
+    height: 16px;
+  }
+
+  .r5-radio-option input[type="radio"]:checked + .r5-radio-custom::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .r5-radio-label {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .r5-select {
+    font-size: 13px;
+    line-height: 19px;
+    padding: 10px 40px 10px 12px;
+  }
+
+  .r5-select-chevron {
+    right: 12px;
+  }
+
+  .r5-select-chevron svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .r5-btn-next,
+  .r5-btn-back {
+    height: 44px;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .r5-login-text {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  .r5-footer {
+    margin-top: 20px;
+  }
+
+  .r5-footer p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+/* Mobile Large (≤480px) */
+@media (max-width: 480px) {
+  .r5-container {
+    padding: 10px 12px 12px;
+  }
+
+  .r5-logo {
+    margin-bottom: 12px;
+  }
+
+  .r5-logo svg {
+    width: 130px;
+    height: auto;
+  }
+
+  .r5-card {
+    padding: 16px 20px 20px;
+    border-radius: 12px;
+  }
+
+  .r5-card-title {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+
+  .r5-progress-container {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .r5-step-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .r5-step-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .r5-step-text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .r5-progress-bar-track {
+    height: 4px;
+  }
+
+  .r5-progress-indicator {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+  }
+
+  .r5-form {
+    gap: 14px;
+  }
+
+  .r5-form-group {
+    gap: 6px;
+  }
+
+  .r5-form-label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .r5-radio-group {
+    gap: 8px;
+  }
+
+  .r5-radio-option {
+    padding: 6px 8px;
+  }
+
+  .r5-radio-custom {
+    width: 14px;
+    height: 14px;
+    border-width: 1.5px;
+  }
+
+  .r5-radio-option input[type="radio"]:checked + .r5-radio-custom::after {
+    width: 6px;
+    height: 6px;
+  }
+
+  .r5-radio-label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .r5-select {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 9px 36px 9px 12px;
+    border-radius: 8px;
+  }
+
+  .r5-select-chevron {
+    right: 10px;
+  }
+
+  .r5-select-chevron svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .r5-btn-next,
+  .r5-btn-back {
+    height: 42px;
+    font-size: 14px;
+    line-height: 21px;
+    border-radius: 8px;
+  }
+
+  .r5-login-text {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 2px;
+  }
+
+  .r5-footer {
+    margin-top: 16px;
+  }
+
+  .r5-footer p {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+/* Mobile Small (≤360px) */
+@media (max-width: 360px) {
+  .r5-container {
+    padding: 8px 10px 10px;
+  }
+
+  .r5-logo svg {
+    width: 120px;
+  }
+
+  .r5-card {
+    padding: 14px 16px 16px;
+  }
+
+  .r5-card-title {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .r5-form {
+    gap: 12px;
+  }
+
+  .r5-radio-group {
+    gap: 6px;
+  }
+
+  .r5-btn-next,
+  .r5-btn-back {
+    height: 40px;
+    font-size: 13px;
+  }
+}
