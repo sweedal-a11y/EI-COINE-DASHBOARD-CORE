@@ -125,7 +125,7 @@ function Dashboard() {
             </svg>
           </div>
 
-          <div className="flex items-center gap-10 ml-16">
+       <div className="flex items-center gap-10 ml-16">   
             <div className="hidden md:flex items-center gap-8">
               <a className="nav-link hover:text-primary transition-colors text-[15px]" href="#">Announcements</a>
               <a className="nav-link hover:text-primary transition-colors text-[15px]" href="#">Transactions</a>

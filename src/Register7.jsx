@@ -275,9 +275,7 @@ const Register7 = () => {
             disabled={!emireqService || !emireqCoinsService || !recaptchaVerified}
           >
             Sign Up
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 1L6.59 2.41L10.17 6H2V8H10.17L6.59 11.59L8 13L14 7L8 1Z" fill="white"/>
-            </svg>
+          
           </button>
         </div>
 
