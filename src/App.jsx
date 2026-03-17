@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Eipluscoins from './Eipluscoins';
 import CreateAccount from './CreateAccount';
 import EmailVerificationPending from './EmailVerificationPending';
 import EmailConfirmationSuccess from './EmailConfirmationSuccess';
@@ -14,7 +15,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<CreateAccount />} />
+          <Route path="/" element={<Eipluscoins />} />
+          <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/email-verification-pending" element={<EmailVerificationPending />} />
           <Route path="/email-confirmation-success" element={<EmailConfirmationSuccess />} />
           <Route path="/account-information" element={<AccountInformation />} />
