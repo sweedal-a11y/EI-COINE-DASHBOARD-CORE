@@ -175,6 +175,9 @@ body::after {
 }
 
 .email-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto 24px;
   animation: float 3s ease-in-out infinite;
 }
